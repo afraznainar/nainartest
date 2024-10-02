@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NainarNet - Profile</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset some default styles */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f5f7; /* Light gray background */
+            color: #333; /* Dark text color */
+        }
+
+        .navbar {
+            background-color: #003366; /* Navy blue background */
+            padding: 15px 20px; /* Padding for navbar */
+            display: flex; /* Flexbox for layout */
+            justify-content: space-between; /* Space between title and links */
+            align-items: center; /* Center items vertically */
+        }
+
+        .site-title {
+            font-size: 24px; /* Larger font size for title */
+            font-weight: bold; /* Bold title */
+            color: white; /* White text color */
+        }
+
+        .nav-links {
+            display: flex; /* Flexbox for nav links */
+            align-items: center; /* Center items vertically */
+        }
+
+        .nav-links a {
+            color: white; /* White link text color */
+            text-decoration: none; /* Remove underline */
+            margin: 0 15px; /* Space between links */
+            font-weight: 500; /* Medium font weight */
+            transition: color 0.3s; /* Smooth color transition */
+        }
+
+        .nav-links a:hover {
+            color: #ffcc00; /* Gold color on hover */
+        }
+
+        .profile {
+            max-width: 800px; /* Max width for content */
+            margin: 50px auto; /* Center content */
+            padding: 20px; /* Padding for content */
+            background-color: #ffffff; /* White background for content */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: center; /* Center text */
+        }
+
+        .profile h2 {
+            font-size: 32px; /* Larger font size for heading */
+            margin-bottom: 20px; /* Space below heading */
+            color: #333; /* Dark text color */
+        }
+
+        .profile-section {
+            margin-top: 20px; /* Space above profile section */
+            text-align: left; /* Align text to the left */
+        }
+
+        .profile-section h3 {
+            margin-bottom: 10px; /* Space below section title */
+        }
+
+        .profile-section input[type="text"], input[type="email"], input[type="file"] {
+            width: 100%; /* Full width */
+            padding: 10px; /* Padding */
+            margin: 10px 0; /* Margin */
+            border: 1px solid #ccc; /* Border */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .profile-visibility {
+            margin: 10px 0; /* Margin for visibility section */
+        }
+
+        .profile-visibility label {
+            margin-right: 10px; /* Space between label and radio buttons */
+        }
+
+        button {
+            padding: 10px 15px; /* Padding for button */
+            background-color: #003366; /* Match navbar color */
+            color: white; /* Button text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            font-size: 16px; /* Font size */
+            margin-top: 20px; /* Space above button */
+            transition: background-color 0.3s; /* Smooth background transition */
+        }
+
+        button:hover {
+            background-color: #002244; /* Darker navy on hover */
+        }
+
+        .uploads {
+            margin-top: 20px; /* Space above uploads section */
+        }
+
+        .uploads h3 {
+            margin-bottom: 10px; /* Space below section title */
+        }
+
+        .uploads-grid {
+            display: grid; /* Grid layout for uploads */
+            grid-template-columns: repeat(4, 1fr); /* 4 posts per row */
+            gap: 10px; /* Space between grid items */
+        }
+
+        .upload-item {
+            position: relative; /* Position for overlay */
+            overflow: hidden; /* Hide overflow */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .upload-item img {
+            width: 100%; /* Full width for images */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .upload-item button {
+            position: absolute; /* Position button over image */
+            top: 5px; /* Position from top */
+            right: 5px; /* Position from right */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            padding: 5px; /* Padding for button */
+        }
+
+        .upload-item input[type="text"] {
+            width: 100%; /* Full width */
+            padding: 5px; /* Padding */
+            margin-top: 5px; /* Space above input */
+            border: 1px solid #ccc; /* Border */
+            border-radius: 5px; /* Rounded corners */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="site-title">NainarNet</h1>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="feed.html"><i class="fas fa-stream"></i> Feed</a>
+            <a href="explore.html"><i class="fas fa-compass"></i> Explore</a>
+            <a href="upload.html"><i class="fas fa-plus-circle"></i> Upload</a>
+            <a href="reels.html"><i class="fas fa-film"></i> Reels</a>
+            <a href="earnings.html"><i class="fas fa-money-bill-wave"></i> Earnings</a>
+            <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+            <a href="inbox.html"><i class="fas fa-envelope"></i> Inbox</a>
+        </div>
+    </nav>
+
+    <div class="profile">
+        <h2>Your Profile</h2>
+
+        <div class="profile-section">
+            <h3>Profile Visibility</h3>
+            <div class="profile-visibility">
+                <label>
+                    <input type="radio" name="visibility" value="public" checked> Public
+                </label>
+                <label>
+                    <input type="radio" name="visibility" value="private"> Private
+                </label>
+            </div>
+
+            <h3>Your Details</h3>
+            <input type="file" id="profilePic" accept="image/*" onchange="previewProfilePic(event)">
+            <input type="text" id="bio" placeholder="Write a short bio...">
+            <input type="text" id="website" placeholder="Your website URL">
+            <input type="email" id="contactEmail" placeholder="Your email">
+            <input type="text" id="contactPhone" placeholder="Your phone number">
+            <button onclick="saveProfile()">Save Profile</button>
+        </div>
+
+        <div class="uploads">
+            <h3>Your Uploaded Content</h3>
+            <div class="uploads-grid" id="uploadsGrid">
+                <div class="upload-item">
+                    <img src="path/to/uploaded-image1.jpg" alt="Uploaded Content 1">
+                    <input type="text" placeholder="Change description...">
+                    <button onclick="deletePost(1)">Delete</button>
+                </div>
+                <div class="upload-item">
+                    <img src="path/to/uploaded-image2.jpg" alt="Uploaded Content 2">
+                    <input type="text" placeholder="Change description...">
+                    <button onclick="deletePost(2)">Delete</button>
+                </div>
+                <div class="upload-item">
+                    <img src="path/to/uploaded-image3.jpg" alt="Uploaded Content 3">
+                    <input type="text" placeholder="Change description...">
+                    <button onclick="deletePost(3)">Delete</button>
+                </div>
+                <div class="upload-item">
+                    <img src="path/to/uploaded-image4.jpg" alt="Uploaded Content 4">
+                    <input type="text" placeholder="Change description...">
+                    <button onclick="deletePost(4)">Delete</button>
+                </div>
+                <div class="upload-item">
+                    <img src="path/to/uploaded-image5.jpg" alt="Uploaded Content 5">
+                    <input type="text" placeholder="Change description...">
+                    <button onclick="deletePost(5)">Delete</button>
+                </div>
+                <!-- More uploaded items can be added dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function previewProfilePic(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Display the uploaded image (you can add an <img> tag to show the preview)
+                    console.log(e.target.result); // Placeholder for demonstration
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function saveProfile() {
+            const bio = document.getElementById('bio').value;
+            const website = document.getElementById('website').value;
+            const email = document.getElementById('contactEmail').value;
+            const phone = document.getElementById('contactPhone').value;
+            const visibility = document.querySelector('input[name="visibility"]:checked').value;
+
+            // Here you can add your profile saving logic (e.g., API call)
+            alert(`Profile saved!\nBio: ${bio}\nWebsite: ${website}\nEmail: ${email}\nPhone: ${phone}\nVisibility: ${visibility}`); // Placeholder for demonstration
+        }
+
+        function deletePost(postId) {
+            // Logic to delete the post (e.g., remove from the DOM or make an API call)
+            alert(`Post ${postId} deleted!`); // Placeholder for demonstration
+        }
+    </script>
+</body>
+</html>

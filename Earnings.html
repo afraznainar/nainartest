@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NainarNet - Earnings</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset some default styles */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f5f7; /* Light gray background */
+            color: #333; /* Dark text color */
+        }
+
+
+        .navbar {
+            background-color: #003366; /* Navy blue background */
+            padding: 15px 20px; /* Padding for navbar */
+            display: flex; /* Flexbox for layout */
+            justify-content: space-between; /* Space between title and links */
+            align-items: center; /* Center items vertically */
+        }
+
+
+        .site-title {
+            font-size: 24px; /* Larger font size for title */
+            font-weight: bold; /* Bold title */
+            color: white; /* White text color */
+        }
+
+
+        .nav-links {
+            display: flex; /* Flexbox for nav links */
+            align-items: center; /* Center items vertically */
+        }
+
+
+        .nav-links a {
+            color: white; /* White link text color */
+            text-decoration: none; /* Remove underline */
+            margin: 0 15px; /* Space between links */
+            font-weight: 500; /* Medium font weight */
+            transition: color 0.3s; /* Smooth color transition */
+        }
+
+
+        .nav-links a:hover {
+            color: #ffcc00; /* Gold color on hover */
+        }
+
+
+        .earnings {
+            max-width: 800px; /* Max width for content */
+            margin: 50px auto; /* Center content */
+            padding: 20px; /* Padding for content */
+            background-color: #ffffff; /* White background for content */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: center; /* Center text */
+        }
+
+
+        .earnings h2 {
+            font-size: 32px; /* Larger font size for heading */
+            margin-bottom: 20px; /* Space below heading */
+            color: #333; /* Dark text color */
+        }
+
+
+        .earnings p {
+            font-size: 18px; /* Font size for paragraph */
+            line-height: 1.6; /* Line height for readability */
+            color: #555; /* Slightly lighter text color */
+        }
+
+
+        .earnings-overview, .earnings-history, .performance-metrics, .payout-options, .tips {
+            margin: 20px 0; /* Space between sections */
+            padding: 15px; /* Padding for sections */
+            border: 1px solid #ddd; /* Light border */
+            border-radius: 8px; /* Rounded corners */
+            background-color: #f9f9f9; /* Light background for sections */
+        }
+
+
+        .payout-options select, .payout-options input, .payout-options button {
+            padding: 10px; /* Padding for inputs */
+            margin-top: 10px; /* Space above inputs */
+            border-radius: 5px; /* Rounded corners */
+            border: 1px solid #ccc; /* Border */
+        }
+
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px; /* Could be more or less, depending on screen size */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+        input[type="text"], input[type="password"] {
+            width: 100%; /* Full width */
+            padding: 10px; /* Padding */
+            margin: 10px 0; /* Margin */
+            border: 1px solid #ccc; /* Border */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+
+        button {
+            padding: 10px 15px; /* Padding for button */
+            background-color: #003366; /* Match navbar color */
+            color: white; /* Button text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            font-size: 16px; /* Font size */
+            margin-top: 20px; /* Space above button */
+            transition: background-color 0.3s; /* Smooth background transition */
+        }
+
+
+        button:hover {
+            background-color: #002244; /* Darker navy on hover */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="site-title">NainarNet</h1>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="feed.html"><i class="fas fa-stream"></i> Feed</a>
+            <a href="explore.html"><i class="fas fa-compass"></i> Explore</a>
+            <a href="upload.html"><i class="fas fa-plus-circle"></i> Upload</a>
+            <a href="reels.html"><i class="fas fa-film"></i> Reels</a>
+            <a href="earnings.html"><i class="fas fa-money-bill-wave"></i> Earnings</a>
+            <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+            <a href="inbox.html"><i class="fas fa-envelope"></i> Inbox</a>
+        </div>
+    </nav>
+
+
+    <div class="earnings">
+        <h2>Your Earnings</h2>
+        <p>Track your earnings from your content and see how your creativity pays off!</p>
+
+
+        <div class="earnings-overview">
+            <h3>Earnings Overview</h3>
+            <p>Total Earnings: $500</p>
+            <p>Earnings This Month: $150</p>
+            <p>Top Earning Content: "My Travel Vlog" - $100</p>
+        </div>
+
+
+        <div class="earnings-history">
+            <h3>Earnings History</h3>
+            <p>View your earnings history over time.</p>
+            <ul>
+                <li>January: $200</li>
+                <li>February: $150</li>
+                <li>March: $150</li>
+            </ul>
+        </div>
+
+
+        <div class="performance-metrics">
+            <h3>Performance Metrics</h3>
+            <p>Views: 10,000 | Likes: 500 | Shares: 200</p>
+        </div>
+
+
+        <div class="payout-options">
+            <h3>Payout Options</h3>
+            <p>Select your preferred withdrawal method:</p>
+            <select id="payoutMethod" onchange="toggleAddressInput()">
+                <option value="usdt">USDT</option>
+                <option value="bitcoin">Bitcoin</option>
+            </select>
+            <input type="text" id="addressInput" placeholder="Enter your address" required>
+            <input type="number" id="withdrawalAmount" placeholder="Enter amount to withdraw" min="10" required>
+            <button onclick="initiateWithdrawal()">Withdraw Earnings</button>
+            <p id="withdrawalMessage" style="color: red;"></p>
+        </div>
+
+
+        <div class="tips">
+            <h3>Tips for Increasing Earnings</h3>
+            <ul>
+                <li>Optimize your content for engagement.</li>
+                <li>Promote your posts on social media.</li>
+                <li>Engage with your audience regularly.</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- The Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAuthModal()">&times;</span>
+            <h2>Sign In / Sign Up</h2>
+            <form id="authForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Sign In / Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="js/script.js"></script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("authModal");
+
+
+        // Function to open the modal
+        function openAuthModal() {
+            modal.style.display = "block";
+        }
+
+
+        // Function to close the modal
+        function closeAuthModal() {
+            modal.style.display = "none";
+        }
+
+
+        // Close the modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeAuthModal();
+            }
+        }
+
+
+        // Handle form submission for authentication
+        document.getElementById("authForm").onsubmit = function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+
+            // Here you can add your authentication logic (e.g., API call)
+            alert(`Username: ${username}\nPassword: ${password}`); // Placeholder for demonstration
+            closeAuthModal(); // Close the modal after submission
+        };
+
+
+        // Function to toggle address input visibility based on selected payout method
+        function toggleAddressInput() {
+            const method = document.getElementById("payoutMethod").value;
+            const addressInput = document.getElementById("addressInput");
+            addressInput.placeholder = method === "usdt" ? "Enter your USDT address" : "Enter your Bitcoin address";
+        }
+
+
+        // Function to initiate withdrawal
+        function initiateWithdrawal() {
+            const method = document.getElementById("payoutMethod").value;
+            const address = document.getElementById("addressInput").value;
+            const amount = parseFloat(document.getElementById("withdrawalAmount").value);
+            const followers = 400; // Example follower count, replace with actual user data
+
+
+            if (followers < 350) {
+                document.getElementById("withdrawalMessage").innerText = "You must have at least 350 followers to withdraw.";
+                return;
+            }
+
+
+            if (amount < 10) {
+                document.getElementById("withdrawalMessage").innerText = "Minimum withdrawal amount is $10.";
+                return;
+            }
+
+
+            alert(`Withdrawal of $${amount} initiated via: ${method}\nAddress: ${address}`); // Placeholder for demonstration
+            document.getElementById("withdrawalMessage").innerText = ""; // Clear message
+        }
+    </script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NainarNet - Reels</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset some default styles */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f5f7; /* Light gray background */
+            color: #333; /* Dark text color */
+        }
+
+        .navbar {
+            background-color: #003366; /* Navy blue background */
+            padding: 15px 20px; /* Padding for navbar */
+            display: flex; /* Flexbox for layout */
+            justify-content: space-between; /* Space between title and links */
+            align-items: center; /* Center items vertically */
+        }
+
+        .site-title {
+            font-size: 24px; /* Larger font size for title */
+            font-weight: bold; /* Bold title */
+            color: white; /* White text color */
+        }
+
+        .nav-links {
+            display: flex; /* Flexbox for nav links */
+            align-items: center; /* Center items vertically */
+        }
+
+        .nav-links a {
+            color: white; /* White link text color */
+            text-decoration: none; /* Remove underline */
+            margin: 0 15px; /* Space between links */
+            font-weight: 500; /* Medium font weight */
+            transition: color 0.3s; /* Smooth color transition */
+        }
+
+        .nav-links a:hover {
+            color: #ffcc00; /* Gold color on hover */
+        }
+
+        .reels {
+            max-width: 800px; /* Max width for content */
+            margin: 50px auto; /* Center content */
+            padding: 20px; /* Padding for content */
+            background-color: #ffffff; /* White background for content */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: center; /* Center text */
+        }
+
+        .reels h2 {
+            font-size: 32px; /* Larger font size for heading */
+            margin-bottom: 20px; /* Space below heading */
+            color: #333; /* Dark text color */
+        }
+
+        .reel-item {
+            margin-bottom: 20px; /* Space below each reel */
+            border: 1px solid #ddd; /* Border around reel */
+            border-radius: 5px; /* Rounded corners */
+            padding: 10px; /* Padding for reel */
+        }
+
+        .reel-item video {
+            max-width: 100%; /* Responsive video */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .reel-info {
+            margin-top: 10px; /* Space above reel info */
+        }
+
+        .reel-info div {
+            margin: 5px 0; /* Space between info items */
+        }
+
+        .emoji-reactions {
+            display: flex; /* Flexbox for emoji reactions */
+            justify-content: center; /* Center emojis */
+            margin: 10px 0; /* Space above and below emojis */
+        }
+
+        .emoji {
+            font-size: 20px; /* Emoji size */
+            cursor: pointer; /* Pointer cursor */
+            margin: 0 5px; /* Space between emojis */
+            transition: transform 0.2s; /* Animation for emoji */
+        }
+
+        .emoji:hover {
+            transform: scale(1.2); /* Scale emoji on hover */
+        }
+
+        .post-actions {
+            display: flex; /* Flexbox for actions */
+            justify-content: center; /* Center actions */
+            margin-top: 10px; /* Space above actions */
+        }
+
+        .post-actions button {
+            background: none; /* No background */
+            border: none; /* No border */
+            color: #003366; /* Navy color */
+            cursor: pointer; /* Pointer cursor */
+            font-size: 14px; /* Font size */
+            margin: 0 10px; /* Space between buttons */
+        }
+
+        .post-actions i {
+            margin-right: 5px; /* Space between icon and text */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="site-title">NainarNet</h1>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="feed.html"><i class="fas fa-stream"></i> Feed</a>
+            <a href="explore.html"><i class="fas fa-compass"></i> Explore</a>
+            <a href="upload.html"><i class="fas fa-plus-circle"></i> Upload</a>
+            <a href="reels.html"><i class="fas fa-film"></i> Reels</a>
+            <a href="earnings.html"><i class="fas fa-money-bill-wave"></i> Earnings</a>
+            <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+            <a href="inbox.html"><i class="fas fa-envelope"></i> Inbox</a>
+        </div>
+    </nav>
+
+    <div class="reels">
+        <h2>Trending Reels</h2>
+        <div id="reelsContainer">
+            <!-- Sample reel items will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Sample reels data
+        const sampleReels = [
+            {
+                id: 1,
+                user: 'User1',
+                video: [
+                    { src: 'https://www.w3schools.com/html/mov_bbb.mp4', type: 'video/mp4' },
+                    { src: 'https://www.w3schools.com/html/mov_bbb.webm', type: 'video/webm' }
+                ],
+                description: 'This is a sample reel!',
+                views: 100,
+                reposts: 2,
+                shares: 0,
+                reactions: {
+                    heart: 0,
+                    laugh: 0,
+                    mindblown: 0,
+                    surprised: 0,
+                    angry: 0
+                },
+                comments: [],
+            },
+            {
+                id: 2,
+                user: 'User2',
+                video: [
+                    { src: 'https://www.w3schools.com/html/mov_bbb.mp4', type: 'video/mp4' },
+                    { src: 'https://www.w3schools.com/html/mov_bbb.webm', type: 'video/webm' }
+                ],
+                description: 'Another sample reel!',
+                views: 200,
+                reposts: 5,
+                shares: 0,
+                reactions: {
+                    heart: 0,
+                    laugh: 0,
+                    mindblown: 0,
+                    surprised: 0,
+                    angry: 0
+                },
+                comments: [],
+            },
+            // Add more sample reels as needed
+        ];
+
+        function renderReels() {
+            const reelsContainer = document.getElementById('reelsContainer');
+            reelsContainer.innerHTML = ''; // Clear existing reels
+
+            sampleReels.forEach(reel => {
+                const reelElement = document.createElement('div');
+                reelElement.className = 'reel-item';
+                reelElement.innerHTML = `
+                    <video controls>
+                        ${reel.video.map(source => `<source src="${source.src}" type="${source.type}">`).join('')}
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="reel-info">
+                        <div>${reel.description}</div>
+                        <div>Views: ${reel.views} | Reposts: ${reel.reposts} | Shares: ${reel.shares}</div>
+                    </div>
+                    <div class="emoji-reactions">
+                        <span class="emoji" onclick="reactToReel(${reel.id}, 'heart')">❤️ ${reel.reactions.heart}</span>
+                        <span class="emoji" onclick="reactToReel(${reel.id}, 'laugh')">😂 ${reel.reactions.laugh}</span>
+                        <span class="emoji" onclick="reactToReel(${reel.id}, 'mindblown')">🤯 ${reel.reactions.mindblown}</span>
+                        <span class="emoji" onclick="reactToReel(${reel.id}, 'surprised')">😮 ${reel.reactions.surprised}</span>
+                        <span class="emoji" onclick="reactToReel(${reel.id}, 'angry')">😡 ${reel.reactions.angry}</span>
+                    </div>
+                    <div class="post-actions">
+                        <button onclick="addComment(${reel.id})"><i class="fas fa-comment"></i></button>
+                        <button onclick="repost(${reel.id})"><i class="fas fa-retweet"></i></button>
+                        <button onclick="share(${reel.id})"><i class="fas fa-share"></i></button>
+                    </div>
+                `;
+                reelsContainer.appendChild(reelElement);
+            });
+        }
+
+        function reactToReel(reelId, reactionType) {
+            const reel = sampleReels.find(r => r.id === reelId);
+            if (reel.reactions[reactionType] !== undefined) {
+                reel.reactions[reactionType]++;
+                renderReels(); // Re-render to update counts
+            }
+        }
+
+        function addComment(reelId) {
+            // Placeholder for comment functionality
+            alert(`Commenting on Reel ${reelId}`);
+        }
+
+        function repost(reelId) {
+            const reel = sampleReels.find(r => r.id === reelId);
+            reel.reposts++;
+            renderReels();
+        }
+
+        function share(reelId) {
+            const reel = sampleReels.find(r => r.id === reelId);
+            reel.shares++;
+            renderReels(); // Re-render to update share count
+            alert(`Sharing Reel ${reelId}`); // Placeholder for share functionality
+        }
+
+        // Initial load of reels
+        renderReels();
+    </script>
+</body>
+</html>
+
+

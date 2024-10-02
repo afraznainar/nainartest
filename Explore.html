@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NainarNet - Explore</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Navbar styles */
+        .navbar {
+            background-color: #003366; /* Navy blue background */
+            padding: 15px 20px; /* Padding for navbar */
+            display: flex; /* Flexbox for layout */
+            justify-content: space-between; /* Space between title and links */
+            align-items: center; /* Center items vertically */
+        }
+
+        .site-title {
+            font-size: 24px; /* Larger font size for title */
+            font-weight: bold; /* Bold title */
+            color: white; /* White text color */
+        }
+
+        .nav-links {
+            display: flex; /* Flexbox for nav links */
+            align-items: center; /* Center items vertically */
+        }
+
+        .nav-links a {
+            color: white; /* White link text color */
+            text-decoration: none; /* Remove underline */
+            margin: 0 15px; /* Space between links */
+            font-weight: 500; /* Medium font weight */
+            transition: color 0.3s; /* Smooth color transition */
+        }
+
+        .nav-links a:hover {
+            color: #ffcc00; /* Gold color on hover */
+        }
+
+        .explore {
+            max-width: 1200px; /* Max width for content */
+            margin: 50px auto; /* Center content */
+            padding: 20px; /* Padding for content */
+            background-color: #ffffff; /* White background for content */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: center; /* Center text */
+        }
+
+        .explore h2 {
+            font-size: 32px; /* Larger font size for heading */
+            margin-bottom: 20px; /* Space below heading */
+            color: #333; /* Dark text color */
+        }
+
+        .posts-container {
+            display: grid; /* Grid layout for posts */
+            grid-template-columns: repeat(4, 1fr); /* 4 posts per row */
+            gap: 20px; /* Space between posts */
+        }
+
+        .post {
+            border: 1px solid #ddd; /* Border around post */
+            border-radius: 5px; /* Rounded corners */
+            padding: 15px; /* Padding for post */
+            text-align: left; /* Align text to the left */
+        }
+
+        .post h4 {
+            margin: 0; /* Remove default margin */
+            font-size: 18px; /* Font size for post title */
+        }
+
+        .post img, .post video {
+            max-width: 100%; /* Responsive media */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .reaction-container {
+            display: flex; /* Flexbox for reactions */
+            flex-direction: column; /* Stack counts and emojis */
+            margin-top: 10px; /* Space above reactions */
+        }
+
+        .reaction-count {
+            margin-bottom: 5px; /* Space below counts */
+        }
+
+        .emoji-reactions {
+            display: flex; /* Flexbox for emoji reactions */
+            margin-top: 5px; /* Space above reactions */
+        }
+
+        .emoji {
+            font-size: 20px; /* Emoji size */
+            cursor: pointer; /* Pointer cursor */
+            margin-right: 10px; /* Space between emojis */
+            transition: transform 0.2s; /* Animation for emoji */
+        }
+
+        .emoji:hover {
+            transform: scale(1.2); /* Scale emoji on hover */
+        }
+
+        .post-actions {
+            display: flex; /* Flexbox for actions */
+            justify-content: space-between; /* Space between actions */
+            margin-top: 10px; /* Space above actions */
+        }
+
+        .post-actions button {
+            background: none; /* No background */
+            border: none; /* No border */
+            color: #003366; /* Navy color */
+            cursor: pointer; /* Pointer cursor */
+            font-size: 14px; /* Font size */
+            display: flex; /* Flexbox for icons */
+            align-items: center; /* Center items vertically */
+            margin: 0 5px; /* Reduced margin for compactness */
+        }
+
+        .post-actions i {
+            margin-right: 5px; /* Space between icon and text */
+        }
+
+        .comment-section {
+            margin-top: 10px; /* Space above comment section */
+        }
+
+        .comment-section input[type="text"] {
+            width: calc(100% - 100px); /* Full width minus button */
+            padding: 10px; /* Padding */
+            border: 1px solid #ccc; /* Border */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .comment-section button {
+            padding: 10px 15px; /* Padding for button */
+            background-color: #003366; /* Match navbar color */
+            color: white; /* Button text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            font-size: 16px; /* Font size */
+            margin-left: 10px; /* Space to the left */
+            transition: background-color 0.3s; /* Smooth background transition */
+        }
+
+        .comment-section button:hover {
+            background-color: #002244; /* Darker navy on hover */
+        }
+
+        .comments {
+            margin-top: 10px; /* Space above comments */
+            border-top: 1px solid #ddd; /* Top border */
+            padding-top: 10px; /* Padding above comments */
+        }
+
+        .comment {
+            margin-bottom: 5px; /* Space below each comment */
+            color: #555; /* Slightly lighter text color */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="site-title">NainarNet</h1>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="feed.html"><i class="fas fa-stream"></i> Feed</a>
+            <a href="explore.html"><i class="fas fa-compass"></i> Explore</a>
+            <a href="upload.html"><i class="fas fa-plus-circle"></i> Upload</a>
+            <a href="reels.html"><i class="fas fa-film"></i> Reels</a>
+            <a href="earnings.html"><i class="fas fa-money-bill-wave"></i> Earnings</a>
+            <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+            <a href="inbox.html"><i class="fas fa-envelope"></i> Inbox</a>
+        </div>
+    </nav>
+
+    <div class="explore">
+        <h2>Explore</h2>
+        <div class="posts-container" id="postsContainer">
+            <!-- Posts will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Sample posts data
+        const samplePosts = [
+            {
+                id: 1,
+                user: 'User1',
+                content: 'This is a sample post!',
+                media: 'https://via.placeholder.com/300',
+                views: 100,
+                reposts: 2,
+                shares: 5,
+                reactions: {
+                    heart: 0,
+                    laugh: 0,
+                    mindblown: 0,
+                    surprised: 0,
+                    angry: 0
+                },
+                comments: [],
+            },
+            {
+                id: 2,
+                user: 'User2',
+                content: 'Another interesting post!',
+                media: 'https://via.placeholder.com/300',
+                views: 150,
+                reposts: 3,
+                shares: 2,
+                reactions: {
+                    heart: 0,
+                    laugh: 0,
+                    mindblown: 0,
+                    surprised: 0,
+                    angry: 0
+                },
+                comments: [],
+            },
+            {
+                id: 3,
+                user: 'User3',
+                content: 'Check out this cool post!',
+                media: 'https://via.placeholder.com/300',
+                views: 200,
+                reposts: 5,
+                shares: 1,
+                reactions: {
+                    heart: 0,
+                    laugh: 0,
+                    mindblown: 0,
+                    surprised: 0,
+                    angry: 0
+                },
+                comments: [],
+            },
+            {
+                id: 4,
+                user: 'User4',
+                content: 'This is a sponsored post!',
+                media: 'https://via.placeholder.com/300',
+                views: 250,
+                reposts: 4,
+                shares: 3,
+                reactions: {
+                    heart: 0,
+                    laugh: 0,
+                    mindblown: 0,
+                    surprised: 0,
+                    angry: 0
+                },
+                comments: [],
+            },
+            // Add more sample posts as needed
+        ];
+
+        function renderPosts() {
+            const postsContainer = document.getElementById('postsContainer');
+            postsContainer.innerHTML = ''; // Clear existing posts
+
+            samplePosts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post';
+                postElement.innerHTML = `
+                    <h4>${post.user}</h4>
+                    <p>${post.content}</p>
+                    <img src="${post.media}" alt="Post Media">
+                    <div class="reaction-container">
+                        <div class="reaction-count">Views: ${post.views} | Reposts: ${post.reposts} | Shares: ${post.shares}</div>
+                        <div class="emoji-reactions">
+                            <span class="emoji" onclick="reactToPost(${post.id}, '❤️')">❤️ ${post.reactions.heart}</span>
+                            <span class="emoji" onclick="reactToPost(${post.id}, '😂')">😂 ${post.reactions.laugh}</span>
+                            <span class="emoji" onclick="reactToPost(${post.id}, '🤯')">🤯 ${post.reactions.mindblown}</span>
+                            <span class="emoji" onclick="reactToPost(${post.id}, '😮')">😮 ${post.reactions.surprised}</span>
+                            <span class="emoji" onclick="reactToPost(${post.id}, '😡')">😡 ${post.reactions.angry}</span>
+                        </div>
+                    </div>
+                    <div class="post-actions">
+                        <button onclick="repost(${post.id})"><i class="
+
+

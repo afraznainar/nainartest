@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NainarNet - Feed</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset some default styles */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f5f7; /* Light gray background */
+            color: #333; /* Dark text color */
+        }
+
+        .navbar {
+            background-color: #003366; /* Navy blue background */
+            padding: 15px 20px; /* Padding for navbar */
+            display: flex; /* Flexbox for layout */
+            justify-content: space-between; /* Space between title and links */
+            align-items: center; /* Center items vertically */
+        }
+
+        .site-title {
+            font-size: 24px; /* Larger font size for title */
+            font-weight: bold; /* Bold title */
+            color: white; /* White text color */
+        }
+
+        .nav-links {
+            display: flex; /* Flexbox for nav links */
+            align-items: center; /* Center items vertically */
+        }
+
+        .nav-links a {
+            color: white; /* White link text color */
+            text-decoration: none; /* Remove underline */
+            margin: 0 15px; /* Space between links */
+            font-weight: 500; /* Medium font weight */
+            transition: color 0.3s; /* Smooth color transition */
+        }
+
+        .nav-links a:hover {
+            color: #ffcc00; /* Gold color on hover */
+        }
+
+        .feed {
+            max-width: 800px; /* Max width for content */
+            margin: 50px auto; /* Center content */
+            padding: 20px; /* Padding for content */
+            background-color: #ffffff; /* White background for content */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        .feed h2 {
+            font-size: 32px; /* Larger font size for heading */
+            margin-bottom: 20px; /* Space below heading */
+            color: #333; /* Dark text color */
+        }
+
+        .post {
+            border: 1px solid #ddd; /* Border around post */
+            border-radius: 5px; /* Rounded corners */
+            padding: 15px; /* Padding for post */
+            margin-bottom: 20px; /* Space below post */
+        }
+
+        .post h3 {
+            margin: 0; /* Remove default margin */
+            font-size: 20px; /* Font size for post title */
+        }
+
+        .post img, .post video {
+            max-width: 100%; /* Responsive media */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .post-actions {
+            display: flex; /* Flexbox for actions */
+            justify-content: space-between; /* Space between actions */
+            margin-top: 10px; /* Space above actions */
+        }
+
+        .post-actions button {
+            background: none; /* No background */
+            border: none; /* No border */
+            color: #003366; /* Navy color */
+            cursor: pointer; /* Pointer cursor */
+            font-size: 14px; /* Font size */
+        }
+
+        .emoji-reactions {
+            display: flex; /* Flexbox for emoji reactions */
+            margin-top: 5px; /* Space above reactions */
+        }
+
+        .emoji {
+            font-size: 20px; /* Emoji size */
+            cursor: pointer; /* Pointer cursor */
+            margin-right: 10px; /* Space between emojis */
+        }
+
+        .comment-section {
+            margin-top: 10px; /* Space above comment section */
+        }
+
+        .comment-section input[type="text"] {
+            width: calc(100% - 100px); /* Full width minus button */
+            padding: 10px; /* Padding */
+            border: 1px solid #ccc; /* Border */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .comment-section button {
+            padding: 10px 15px; /* Padding for button */
+            background-color: #003366; /* Match navbar color */
+            color: white; /* Button text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            font-size: 16px; /* Font size */
+            margin-left: 10px; /* Space to the left */
+            transition: background-color 0.3s; /* Smooth background transition */
+        }
+
+        .comment-section button:hover {
+            background-color: #002244; /* Darker navy on hover */
+        }
+
+        .comments {
+            margin-top: 10px; /* Space above comments */
+            border-top: 1px solid #ddd; /* Top border */
+            padding-top: 10px; /* Padding above comments */
+        }
+
+        .comment {
+            margin-bottom: 5px; /* Space below each comment */
+            color: #555; /* Slightly lighter text color */
+        }
+
+        .load-more {
+            text-align: center; /* Center load more button */
+            margin-top: 20px; /* Space above button */
+        }
+
+        .load-more button {
+            padding: 10px 15px; /* Padding for button */
+            background-color: #003366; /* Match navbar color */
+            color: white; /* Button text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            font-size: 16px; /* Font size */
+            transition: background-color 0.3s; /* Smooth background transition */
+        }
+
+        .load-more button:hover {
+            background-color: #002244; /* Darker navy on hover */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="site-title">NainarNet</h1>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="feed.html"><i class="fas fa-stream"></i> Feed</a>
+            <a href="explore.html"><i class="fas fa-compass"></i> Explore</a>
+            <a href="upload.html"><i class="fas fa-plus-circle"></i> Upload</a>
+            <a href="reels.html"><i class="fas fa-film"></i> Reels</a>
+            <a href="earnings.html"><i class="fas fa-money-bill-wave"></i> Earnings</a>
+            <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+            <a href="inbox.html"><i class="fas fa-envelope"></i> Inbox</a>
+        </div>
+    </nav>
+
+    <div class="feed">
+        <h2>Your Feed</h2>
+
+        <div id="postsContainer">
+            <!-- Posts will be dynamically added here -->
+        </div>
+        <div class="load-more">
+            <button onclick="loadMorePosts()">Load More</button>
+        </div>
+    </div>
+
+    <script>
+        let posts = []; // Array to hold posts
+        let postCount = 0; // Track number of posts loaded
+
+        // Sample data for demonstration
+        const samplePosts = [
+            { id: 1, user: 'User1', content: 'Check out my new reel!', media: 'path/to/reel1.mp4', likes: 0, comments: [] },
+            { id: 2, user: 'User2', content: 'This is a great story!', media: 'path/to/story1.jpg', likes: 0, comments: [] },
+            { id: 3, user: 'User3', content: 'Loving this content!', media: 'path/to/reel2.mp4', likes: 0, comments: [] },
+            // Add more sample posts as needed
+        ];
+
+        function loadMorePosts() {
+            const postsContainer = document.getElementById('postsContainer');
+            const postsToLoad = samplePosts.slice(postCount, postCount + 2); // Load 2 posts at a time
+            postCount += postsToLoad.length;
+
+            postsToLoad.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post';
+                postElement.innerHTML = `
+                    <h3>${post.user}</h3>
+                    <p>${post.content}</p>
+                    ${post.media.endsWith('.mp4') ? `<video controls src="${post.media}"></video>` : `<img src="${post.media}" alt="Post Media">`}
+                    <div class="post-actions">
+                        <button onclick="likePost(${post.id})">Like (${post.likes})</button>
+                        <button onclick="sharePost(${post.id})">Share</button>
+                    </div>
+                    <div class="emoji-reactions">
+                        <span class="emoji" onclick="reactToPost(${post.id}, '😊')">😊</span>
+                        <span class="emoji" onclick="reactToPost(${post.id}, '❤️')">❤️</span>
+                        <span class="emoji" onclick="reactToPost(${post.id}, '😂')">😂</span>
+                    </div>
+                    <div class="comment-section">
+                        <input type="text" id="commentInput${post.id}" placeholder="Add a comment...">
+                        <button onclick="addComment(${post.id})">Comment</button>
+                    </div>
+                    <div class="comments" id="comments${post.id}">
+                        ${post.comments.map(comment => `<div class="comment">${comment}</div>`).join('')}
+                    </div>
+                `;
+                postsContainer.appendChild(postElement);
+            });
+
+            if (postCount >= samplePosts.length) {
+                document.querySelector('.load-more').style.display = 'none'; // Hide load more button if no more posts
+            }
+        }
+
+        function likePost(postId) {
+            const post = samplePosts.find(p => p.id === postId);
+            post.likes++;
+            renderPosts();
+        }
+
+        function sharePost(postId) {
+            alert(`Post #${postId} shared!`); // Placeholder for share functionality
+        }
+
+        function reactToPost(postId, emoji) {
+            const post = samplePosts.find(p => p.id === postId);
+            post.comments.push(`Reacted with ${
+
+

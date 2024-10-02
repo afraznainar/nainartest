@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NainarNet - Upload</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset some default styles */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f5f7; /* Light gray background */
+            color: #333; /* Dark text color */
+        }
+
+        .navbar {
+            background-color: #003366; /* Navy blue background */
+            padding: 15px 20px; /* Padding for navbar */
+            display: flex; /* Flexbox for layout */
+            justify-content: space-between; /* Space between title and links */
+            align-items: center; /* Center items vertically */
+        }
+
+        .site-title {
+            font-size: 24px; /* Larger font size for title */
+            font-weight: bold; /* Bold title */
+            color: white; /* White text color */
+        }
+
+        .nav-links {
+            display: flex; /* Flexbox for nav links */
+            align-items: center; /* Center items vertically */
+        }
+
+        .nav-links a {
+            color: white; /* White link text color */
+            text-decoration: none; /* Remove underline */
+            margin: 0 15px; /* Space between links */
+            font-weight: 500; /* Medium font weight */
+            transition: color 0.3s; /* Smooth color transition */
+        }
+
+        .nav-links a:hover {
+            color: #ffcc00; /* Gold color on hover */
+        }
+
+        .upload {
+            max-width: 800px; /* Max width for content */
+            margin: 50px auto; /* Center content */
+            padding: 20px; /* Padding for content */
+            background-color: #ffffff; /* White background for content */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: center; /* Center text */
+        }
+
+        .upload h2 {
+            font-size: 32px; /* Larger font size for heading */
+            margin-bottom: 20px; /* Space below heading */
+            color: #333; /* Dark text color */
+        }
+
+        .upload p {
+            font-size: 18px; /* Font size for paragraph */
+            line-height: 1.6; /* Line height for readability */
+            color: #555; /* Slightly lighter text color */
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px; /* Could be more or less, depending on screen size */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        input[type="text"], input[type="password"], input[type="file"] {
+            width: 100%; /* Full width */
+            padding: 10px; /* Padding */
+            margin: 10px 0; /* Margin */
+            border: 1px solid #ccc; /* Border */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        button {
+            padding: 10px 15px; /* Padding for button */
+            background-color: #003366; /* Match navbar color */
+            color: white; /* Button text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            font-size: 16px; /* Font size */
+            margin-top: 20px; /* Space above button */
+            transition: background-color 0.3s; /* Smooth background transition */
+        }
+
+        button:hover {
+            background-color: #002244; /* Darker navy on hover */
+        }
+
+        .location-button {
+            margin-top: 20px; /* Space above the button */
+            background-color: #003366; /* Match navbar color */
+        }
+
+        .location-button:hover {
+            background-color: #002244; /* Darker navy on hover */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="site-title">NainarNet</h1>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="feed.html"><i class="fas fa-stream"></i> Feed</a>
+            <a href="explore.html"><i class="fas fa-compass"></i> Explore</a>
+            <a href="upload.html"><i class="fas fa-plus-circle"></i> Upload</a>
+            <a href="reels.html"><i class="fas fa-film"></i> Reels</a>
+            <a href="earnings.html"><i class="fas fa-money-bill-wave"></i> Earnings</a>
+            <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+            <a href="inbox.html"><i class="fas fa-envelope"></i> Inbox</a>
+        </div>
+    </nav>
+
+    <div class="upload">
+        <h2>Upload Content</h2>
+        <p>Create and share your videos, photos, and stories—and start turning your content into earnings!</p>
+        <form id="uploadForm">
+            <input type="text" id="title" placeholder="Title" required>
+            <input type="file" id="file" required>
+            <button type="button" class="location-button" onclick="openLocationModal()">Choose Location</button>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <!-- Location Modal -->
+    <div id="locationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLocationModal()">&times;</span>
+            <h2>Select Location</h2>
+            <input type="text" id="location" placeholder="Enter location" required>
+            <button onclick="confirmLocation()">Confirm Location</button>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAuthModal()">&times;</span>
+            <h2>Sign In / Sign Up</h2>
+            <form id="authForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Sign In / Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Get the modals
+        var authModal = document.getElementById("authModal");
+        var locationModal = document.getElementById("locationModal");
+
+        // Function to open the authentication modal
+        function openAuthModal() {
+            authModal.style.display = "block";
+        }
+
+        // Function to close the authentication modal
+        function closeAuthModal() {
+            authModal.style.display = "none";
+        }
+
+        // Function to open the location modal
+        function openLocationModal() {
+            locationModal.style.display = "block";
+        }
+
+        // Function to close the location modal
+        function closeLocationModal() {
+            locationModal.style.display = "none";
+        }
+
+        // Function to confirm location
+        function confirmLocation() {
+            const location = document.getElementById("location").value;
+            alert(`Location set to: ${location}`); // Placeholder for demonstration
+            closeLocationModal(); // Close the modal after confirmation
+        }
+
+        // Close the modals when clicking outside of them
+        window.onclick = function(event) {
+            if (event.target == authModal) {
+                closeAuthModal();
+            } else if (event.target == locationModal) {
+                closeLocationModal();
+            }
+        }
+
+        // Handle form submission for authentication
+        document.getElementById("authForm").onsubmit = function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Here you can add your authentication logic (e.g., API call)
+            alert(`Username: ${username}\nPassword: ${password}`); // Placeholder for demonstration
+            closeAuthModal(); // Close the modal after submission
+        };
+
+        // Handle form submission for upload
+        document.getElementById("uploadForm").onsubmit = function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            const title = document.getElementById("title").value;
+            const file = document.getElementById("file").files[0];
+
+            // Here you can add your upload logic (e.g., API call)
+            alert(`Title: ${title}\nFile: ${file.name}`); // Placeholder for demonstration
+            // Reset the form
+            document.getElementById("uploadForm").reset();
+        };
+    </script>
+</body>
+</html>
+
+
